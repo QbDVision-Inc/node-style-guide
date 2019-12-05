@@ -533,7 +533,7 @@ segments of your code. Don't use comments to restate trivial things.
 
 ```js
 // "ID_SOMETHING=VALUE" -> ["ID_SOMETHING=VALUE", "SOMETHING", "VALUE"]
-let matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+let matches = item.match(/ID_([^\n]+)=([^\n]+)/);
 
 /* This function has a nasty side effect where a failure to increment a
    redis counter used for statistics will cause an exception. This needs
