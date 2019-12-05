@@ -1,10 +1,10 @@
 # Node.js Style Guide
 
-This is a guide for writing consistent and aesthetically pleasing node.js code.
+This is a guide for writing consistent and aesthetically pleasing code at CherryCircle Software.
 It is inspired by what is popular within the community, and flavored with some
 personal opinions.
 
-This guide was originally created and forked from [Felix Geisendörfer](http://felixge.de/)'s 
+This guide was originally created and forked from [Felix Geisendörfer](http://felixge.de/)'s
 [Node.js Style Guide](https://github.com/felixge/node-style-guide) and is
 licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
 license. You are encouraged to fork this repository and make adjustments
@@ -22,26 +22,27 @@ according to your preferences.
 * [80 characters per line](#80-characters-per-line)
 * [Use double quotes](#use-double-quotes)
 * [Opening braces go on the same line](#opening-braces-go-on-the-same-line)
-* [Declare one variable per var statement](#declare-one-variable-per-var-statement)
+* [Declare one variable per let statement](#declare-one-variable-per-let-statement)
 
 ### Naming Conventions
 * [Use lowerCamelCase for variables, properties and function names](#use-lowercamelcase-for-variables-properties-and-function-names)
 * [Use UpperCamelCase for class names](#use-uppercamelcase-for-class-names)
 * [Use UPPERCASE for Constants](#use-uppercase-for-constants)
+* [HTML and CSS](#html-and-css)
+* [Filenames](#filenames)
 
 ### Variables
+* [Never use var](#never-use-var)
 * [Object / Array creation](#object--array-creation)
 
 ### Conditionals
 * [Use the === operator](#use-the--operator)
-* [Use multi-line ternary operator](#use-multi-line-ternary-operator)
 * [Use descriptive conditions](#use-descriptive-conditions)
 
 ### Functions
 * [Write small functions](#write-small-functions)
 * [Return early from functions](#return-early-from-functions)
-* [Name your closures](#name-your-closures)
-* [No nested closures](#no-nested-closures)
+* [Use the => syntax for nested closures](#use-the--syntax-for-nested-closures)
 * [Method chaining](#method-chaining)
 
 ### Comments
@@ -49,19 +50,19 @@ according to your preferences.
 * [Use JsDoc syntax](#use-jsdoc-syntax)
 
 ### Miscellaneous
-* [Object.freeze, Object.preventExtensions, Object.seal, with, eval](#objectfreeze-objectpreventextensions-objectseal-with-eval)
+* [Object.preventExtensions, Object.seal, with, eval](#objectpreventextensions-objectseal-with-eval)
 * [Requires At Top](#requires-at-top)
 * [Getters and setters](#getters-and-setters)
 * [Do not extend built-in prototypes](#do-not-extend-built-in-prototypes)
+* [Use ES6 Syntax](#use-es6-syntax)
+* [SQL](#sql)
 
 ## Formatting
-
-You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the formatting settings in your editor. Use the [Node.js Style Guide .editorconfig file](.editorconfig) to have indentation, newslines and whitespace behavior automatically set to the rules set up below.
 
 ### 2 Spaces for indentation
 
 Use 2 spaces for indenting your code and swear an oath to never use tabs instead of
-spaces - a special kind of hell is awaiting you otherwise.  
+spaces - a special kind of hell is awaiting you otherwise.
 
 ### Newlines
 
@@ -90,7 +91,7 @@ Limit your lines to 80 characters. Yes, screens have gotten much bigger over the
 last few years, but your brain has not. Use the additional room for split screen,
 your editor supports that, right?
 
-### Use  quotes
+### Use double quotes
 
 Use double quotes, unless you are already inside of a string.
 
@@ -114,7 +115,7 @@ Your opening braces go on the same line as the statement.
 
 ```js
 if (true) {
-  console.log('winning');
+  console.log("winning");
 }
 ```
 
@@ -123,15 +124,15 @@ if (true) {
 ```js
 if (true)
 {
-  console.log('losing');
+  console.log("losing");
 }
 ```
 
 Also, notice the use of whitespace before and after the condition statement.
 
-### Declare one variable per var statement
+### Declare one variable per let statement
 
-Declare one variable per var statement, it makes it easier to re-order the
+Declare one variable per let statement, it makes it easier to re-order the
 lines. However, ignore [Crockford][crockfordconvention] when it comes to
 declaring variables deeper inside a function, just put the declarations wherever
 they make sense.
@@ -139,12 +140,12 @@ they make sense.
 *Right:*
 
 ```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
+let keys   = ["foo", "bar"];
+let values = [23, 42];
 
-var object = {};
+let object = {};
 while (keys.length) {
-  var key = keys.pop();
+  let key = keys.pop();
   object[key] = values.pop();
 }
 ```
@@ -152,7 +153,7 @@ while (keys.length) {
 *Wrong:*
 
 ```js
-var keys = ['foo', 'bar'],
+let keys = ["foo", "bar"],
     values = [23, 42],
     object = {},
     key;
@@ -163,7 +164,10 @@ while (keys.length) {
 }
 ```
 
-[crockfordconvention]: http://javascript.crockford.com/code.html
+An exception to this rule is when pulling multiple variables out of an object. This is fine:
+```
+let {id, typeCode, data} = this.props;
+```
 
 ## Naming Conventions
 
@@ -176,13 +180,13 @@ abbreviations should generally be avoided.
 *Right:*
 
 ```js
-var adminUser = db.query('SELECT * FROM users ...');
+let adminUser = db.query("SELECT * FROM users ...");
 ```
 
 *Wrong:*
 
 ```js
-var admin_user = db.query('SELECT * FROM users ...');
+let admin_user = db.query("SELECT * FROM users ...");
 ```
 
 ### Use UpperCamelCase for class names
@@ -211,7 +215,7 @@ using all uppercase letters.
 *Right:*
 
 ```js
-var SECOND = 1 * 1000;
+let SECOND = 1 * 1000;
 
 function File() {
 }
@@ -230,7 +234,75 @@ File.fullPermissions = 0777;
 
 [const]: https://developer.mozilla.org/en/JavaScript/Reference/Statements/const
 
+### HTML and CSS
+
+In HTML and CSS, use kebab case for class names and camel case for IDs.  For example, in CSS you might see:
+
+*Right:*
+
+```css
+.this-is-a-class {
+  //..
+}
+
+#thisIsAnId {
+  //..
+}
+```
+
+*Wrong:*
+
+```css
+.thisIsAClass {
+  //..
+}
+
+#this-Is-An-Id {
+  //..
+}
+```
+
+### Filenames
+
+JS, JSX and SCSS filenames are snake case. For example:
+
+```
+snapshot_helper.js
+some_thing.jsx
+_bootstrap_overrides.scss
+```
+
+HTML and all other files are camel case.  For example:
+```
+cannedReports.html
+deployEnvironment.template
+```
+
+If it’s a Lambda function, name it `*_handler.js`.
+Otherwise name it after an appropriate design pattern.  For example:
+```
+something_factory.js
+this_other_facade.js
+```
+
+Directories are camel case (ex. `webapp/controlMethods`)
+
+
 ## Variables
+
+### Never use var
+
+Never use var, always use let. Ex:
+
+*Right:*
+```
+let a=2;
+```
+
+*Wrong:*
+```
+var a = 2;  ← Bad
+```
 
 ### Object / Array creation
 
@@ -240,21 +312,21 @@ keys when your interpreter complains:
 *Right:*
 
 ```js
-var a = ['hello', 'world'];
-var b = {
-  good: 'code',
-  'is generally': 'pretty',
+let a = ["hello", "world"];
+let b = {
+  good: "code",
+  "is generally": "pretty",
 };
 ```
 
 *Wrong:*
 
 ```js
-var a = [
-  'hello', 'world'
+let a = [
+  "hello", "world"
 ];
-var b = {"good": 'code'
-        , is generally: 'pretty'
+let b = {"good": "code"
+        , is generally: "pretty"
         };
 ```
 
@@ -268,9 +340,9 @@ the triple equality operator as it will work just as expected.
 *Right:*
 
 ```js
-var a = 0;
-if (a !== '') {
-  console.log('winning');
+let a = 0;
+if (a !== "") {
+  console.log("winning");
 }
 
 ```
@@ -278,31 +350,13 @@ if (a !== '') {
 *Wrong:*
 
 ```js
-var a = 0;
-if (a == '') {
-  console.log('losing');
+let a = 0;
+if (a == "") {
+  console.log("losing");
 }
 ```
 
 [comparisonoperators]: https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators
-
-### Use multi-line ternary operator
-
-The ternary operator should not be used on a single line. Split it up into multiple lines instead.
-
-*Right:*
-
-```js
-var foo = (a === b)
-  ? 1
-  : 2;
-```
-
-*Wrong:*
-
-```js
-var foo = (a === b) ? 1 : 2;
-```
 
 ### Use descriptive conditions
 
@@ -311,10 +365,10 @@ Any non-trivial conditions should be assigned to a descriptively named variable 
 *Right:*
 
 ```js
-var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
+let isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
 
 if (isValidPassword) {
-  console.log('winning');
+  console.log("winning");
 }
 ```
 
@@ -322,7 +376,7 @@ if (isValidPassword) {
 
 ```js
 if (password.length >= 4 && /^(?=.*\d).{4,}$/.test(password)) {
-  console.log('losing');
+  console.log("losing");
 }
 ```
 
@@ -376,58 +430,52 @@ further:
 
 ```js
 function isPercentage(val) {
-  var isInRange = (val >= 0 && val <= 100);
+  let isInRange = (val >= 0 && val <= 100);
   return isInRange;
 }
 ```
 
-### Name your closures
+### Use the => syntax for nested closures
 
-Feel free to give your closures a name. It shows that you care about them, and
-will produce better stack traces, heap and cpu profiles.
+Use => syntax for nested closures. This is because it binds the `this` variable better.
 
 *Right:*
 
 ```js
-req.on('end', function onEnd() {
-  console.log('winning');
+req.on("end", () => {
+  console.log("winning");
 });
 ```
 
 *Wrong:*
 
 ```js
-req.on('end', function() {
-  console.log('losing');
+req.on("end", function() {
+  console.log("losing");
+});
+
+// Also wrong:
+
+req.on("end", function onEnd() {
+  console.log("losing");
 });
 ```
 
-### No nested closures
+### Avoid unnecessary brackets
 
-Use closures, but don't nest them. Otherwise your code will become a mess.
+Don't add unnecessary brackets to closures.
 
 *Right:*
 
 ```js
-setTimeout(function() {
-  client.connect(afterConnect);
-}, 1000);
-
-function afterConnect() {
-  console.log('winning');
-}
+let theThing = myArray.find(item => item.isThing === true);
 ```
 
 *Wrong:*
 
 ```js
-setTimeout(function() {
-  client.connect(function() {
-    console.log('losing');
-  });
-}, 1000);
+let theThing = myArray.find((item) => item.isThing === true);
 ```
-
 
 ### Method chaining
 
@@ -439,8 +487,8 @@ You should also indent these methods so it's easier to tell they are part of the
 
 ```js
 User
-  .findOne({ name: 'foo' })
-  .populate('bar')
+  .findOne({ name: "foo" })
+  .populate("bar")
   .exec(function(err, user) {
     return true;
   });
@@ -450,24 +498,24 @@ User
 
 ```js
 User
-.findOne({ name: 'foo' })
-.populate('bar')
+.findOne({ name: "foo" })
+.populate("bar")
 .exec(function(err, user) {
   return true;
 });
 
-User.findOne({ name: 'foo' })
-  .populate('bar')
+User.findOne({ name: "foo" })
+  .populate("bar")
   .exec(function(err, user) {
     return true;
   });
 
-User.findOne({ name: 'foo' }).populate('bar')
+User.findOne({ name: "foo" }).populate("bar")
 .exec(function(err, user) {
   return true;
 });
 
-User.findOne({ name: 'foo' }).populate('bar')
+User.findOne({ name: "foo" }).populate("bar")
   .exec(function(err, user) {
     return true;
   });
@@ -484,8 +532,8 @@ segments of your code. Don't use comments to restate trivial things.
 *Right:*
 
 ```js
-// 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE', 'SOMETHING', 'VALUE']
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+// "ID_SOMETHING=VALUE" -> ["ID_SOMETHING=VALUE", "SOMETHING", "VALUE"]
+let matches = item.match(/ID_([^\n]+)=([^\n]+)/));
 
 /* This function has a nasty side effect where a failure to increment a
    redis counter used for statistics will cause an exception. This needs
@@ -494,7 +542,7 @@ function loadUser(id, cb) {
   // ...
 }
 
-var isSessionValid = (session.expires < Date.now());
+let isSessionValid = (session.expires < Date.now());
 if (isSessionValid) {
   // ...
 }
@@ -504,7 +552,7 @@ if (isSessionValid) {
 
 ```js
 // Execute a regex
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/);
+let matches = item.match(/ID_([^\n]+)=([^\n]+)/);
 
 // Usage: loadUser(5, function() { ... })
 function loadUser(id, cb) {
@@ -512,7 +560,7 @@ function loadUser(id, cb) {
 }
 
 // Check if the session is valid
-var isSessionValid = (session.expires < Date.now());
+let isSessionValid = (session.expires < Date.now());
 // If the session is valid
 if (isSessionValid) {
   // ...
@@ -540,17 +588,17 @@ Or if the file is for a class:
 
 import //...
 
-/** 
+/**
  * This class is responsible for ...
  */
-class SomeClass extends SomeOtherClass { 
+class SomeClass extends SomeOtherClass {
 ```
 
 ## Miscellaneous
 
-### Object.freeze, Object.preventExtensions, Object.seal, with, eval
+### Object.preventExtensions, Object.seal, with, eval
 
-Crazy shit that you will probably never need. Stay away from it.
+Crazy stuff that you will probably never need. Stay away from it.
 
 ### Requires At Top
 
@@ -576,7 +624,7 @@ be forever grateful.
 ```js
 let a = [];
 if (!a.length) {
-  console.log('winning');
+  console.log("winning");
 }
 ```
 
@@ -589,6 +637,16 @@ Array.prototype.empty = function() {
 
 let a = [];
 if (a.empty()) {
-  console.log('losing');
+  console.log("losing");
 }
 ```
+
+### Use ES6 syntax
+
+Always use ES6 syntax.
+Note that currently Sequelize transactions (CLS) can’t use async/await syntax, so we’ll stick with promises on the back end until we upgrade to Sequelize 5.
+
+### SQL
+
+For SQL, follow [this style guide](https://www.sqlstyle.guide/).
+

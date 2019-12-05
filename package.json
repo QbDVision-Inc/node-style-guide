@@ -1,20 +1,17 @@
 {
   "name": "node-style-guide",
-  "description": "A guide for styling your node.js / JavaScript code.",
+  "description": "A guide for styling your CherryCircle Software code.",
   "version": "1.0.0",
-  "author": "Felix Geisendörfer <felix@debuggable.com> (http://debuggable.com/)",
+  "author": "Ryan Shillington",
   "bugs": {
-    "url": "https://github.com/felixge/node-style-guide/issues"
+    "url": "https://github.com/CherryCircle/node-style-guide/issues"
   },
-  "homepage": "https://github.com/felixge/node-style-guide#readme",
-  "keywords": [
-    "eslint",
-    "jshint"
-  ],
+  "homepage": "https://github.com/CherryCircle/node-style-guide#readme",
+  "keywords": [],
   "license": "CC-BY-SA-3.0",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felixge/node-style-guide.git"
+    "url": "git+https://github.com/CherryCircle/node-style-guide.git"
   }
 }
