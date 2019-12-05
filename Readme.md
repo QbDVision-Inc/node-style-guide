@@ -4,11 +4,8 @@ This is a guide for writing consistent and aesthetically pleasing node.js code.
 It is inspired by what is popular within the community, and flavored with some
 personal opinions.
 
-There is a .jshintrc which enforces these rules as closely as possible. You can
-either use that and adjust it, or use
-[this script](https://gist.github.com/kentcdodds/11293570) to make your own.
-
-This guide was created by [Felix Geisendörfer](http://felixge.de/) and is
+This guide was originally created and forked from [Felix Geisendörfer](http://felixge.de/)'s 
+[Node.js Style Guide](https://github.com/felixge/node-style-guide) and is
 licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
 license. You are encouraged to fork this repository and make adjustments
 according to your preferences.
@@ -48,7 +45,8 @@ according to your preferences.
 * [Method chaining](#method-chaining)
 
 ### Comments
-* [Use slashes for comments](#use-slashes-for-comments)
+* [Use comments intelligently](#use-comments-intelligently)
+* [Use JsDoc syntax](#use-jsdoc-syntax)
 
 ### Miscellaneous
 * [Object.freeze, Object.preventExtensions, Object.seal, with, eval](#objectfreeze-objectpreventextensions-objectseal-with-eval)
@@ -477,9 +475,9 @@ User.findOne({ name: 'foo' }).populate('bar')
 
 ## Comments
 
-### Use slashes for comments
+### Use comments intelligently
 
-Use slashes for both single line and multi line comments. Try to write
+Use single or multi line comments. Try to write
 comments that explain higher level mechanisms or clarify difficult
 segments of your code. Don't use comments to restate trivial things.
 
@@ -489,9 +487,9 @@ segments of your code. Don't use comments to restate trivial things.
 // 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE', 'SOMETHING', 'VALUE']
 var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
 
-// This function has a nasty side effect where a failure to increment a
-// redis counter used for statistics will cause an exception. This needs
-// to be fixed in a later iteration.
+/* This function has a nasty side effect where a failure to increment a
+   redis counter used for statistics will cause an exception. This needs
+   to be fixed in a later iteration. */
 function loadUser(id, cb) {
   // ...
 }
@@ -520,6 +518,10 @@ if (isSessionValid) {
   // ...
 }
 ```
+
+### Use JsDoc syntax
+
+When documenting methods and classes  use (JSDoc)[https://devdocs.io/jsdoc/] syntax.
 
 ## Miscellaneous
 
