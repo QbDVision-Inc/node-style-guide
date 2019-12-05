@@ -8,7 +8,7 @@ This guide was originally created and forked from [Felix Geisendörfer](http://f
 [Node.js Style Guide](https://github.com/felixge/node-style-guide) and is
 licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
 license. Other companies are encouraged to fork this repository and make adjustments
-according to your preferences.
+according to their preferences.
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
 
