@@ -20,7 +20,7 @@ according to your preferences.
 * [No trailing whitespace](#no-trailing-whitespace)
 * [Use Semicolons](#use-semicolons)
 * [80 characters per line](#80-characters-per-line)
-* [Use single quotes](#use-single-quotes)
+* [Use double quotes](#use-double-quotes)
 * [Opening braces go on the same line](#opening-braces-go-on-the-same-line)
 * [Declare one variable per var statement](#declare-one-variable-per-var-statement)
 
@@ -60,8 +60,8 @@ You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the 
 
 ### 2 Spaces for indentation
 
-Use 2 spaces for indenting your code and swear an oath to never mix tabs and
-spaces - a special kind of hell is awaiting you otherwise.
+Use 2 spaces for indenting your code and swear an oath to never use tabs instead of
+spaces - a special kind of hell is awaiting you otherwise.  
 
 ### Newlines
 
@@ -90,20 +90,20 @@ Limit your lines to 80 characters. Yes, screens have gotten much bigger over the
 last few years, but your brain has not. Use the additional room for split screen,
 your editor supports that, right?
 
-### Use single quotes
+### Use  quotes
 
-Use single quotes, unless you are writing JSON.
+Use double quotes, unless you are already inside of a string.
 
 *Right:*
 
 ```js
-var foo = 'bar';
+let foo = "bar";
 ```
 
 *Wrong:*
 
 ```js
-var foo = "bar";
+let foo = 'bar';
 ```
 
 ### Opening braces go on the same line
@@ -521,7 +521,30 @@ if (isSessionValid) {
 
 ### Use JsDoc syntax
 
-When documenting methods and classes  use (JSDoc)[https://devdocs.io/jsdoc/] syntax.
+When documenting methods and classes  use [JSDoc](https://devdocs.io/jsdoc/) syntax.
+
+### Every file should have a comment at the top
+
+Every JS file should have a comment at the top that explains the reason for this file existing.  For example:
+```
+"use strict";
+
+/* The functions here are responsible for ...
+ */
+```
+
+Or if the file is for a class:
+
+```
+"use strict";
+
+import //...
+
+/** 
+ * This class is responsible for ...
+ */
+class SomeClass extends SomeOtherClass { 
+```
 
 ## Miscellaneous
 
@@ -551,7 +574,7 @@ be forever grateful.
 *Right:*
 
 ```js
-var a = [];
+let a = [];
 if (!a.length) {
   console.log('winning');
 }
@@ -564,7 +587,7 @@ Array.prototype.empty = function() {
   return !this.length;
 }
 
-var a = [];
+let a = [];
 if (a.empty()) {
   console.log('losing');
 }
