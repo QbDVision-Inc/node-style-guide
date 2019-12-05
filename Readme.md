@@ -7,7 +7,7 @@ personal opinions.
 This guide was originally created and forked from [Felix Geisendörfer](http://felixge.de/)'s
 [Node.js Style Guide](https://github.com/felixge/node-style-guide) and is
 licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
-license. You are encouraged to fork this repository and make adjustments
+license. Other companies are encouraged to fork this repository and make adjustments
 according to your preferences.
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
