@@ -644,7 +644,6 @@ if (a.empty()) {
 ### Use ES6 syntax
 
 Always use ES6 syntax.
-Note that currently Sequelize transactions (CLS) can’t use async/await syntax, so we’ll stick with promises on the back end until we upgrade to Sequelize 5.
 
 ### SQL
 
