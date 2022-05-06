@@ -1,6 +1,6 @@
-# CherryCircle Software Code Style Guide
+# QbDVision, Inc. Software Code Style Guide
 
-This is a guide for writing consistent and aesthetically pleasing code at CherryCircle Software.
+This is a guide for writing consistent and aesthetically pleasing code at QbDVision, Inc.
 It is inspired by what is popular within the community, and flavored with some
 personal opinions.
 
