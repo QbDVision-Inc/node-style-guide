@@ -292,16 +292,20 @@ Directories are camel case (ex. `webapp/controlMethods`)
 
 ### Use prefixes when naming booleans
 
-When naming booleans, use prefixes that give yes/no answers such as *is*, *has*, and *does*:
+When naming boolean variables (and functions that return booleans), use prefixes that give yes/no answers such as *is/are*, *has*, and *should*:
 
 *Good:*
 ```
 let isValid = true;
+let arePointersNull = false;
+let shouldRenderComponent = true;
 ```
 
 *Bad:*
 ```
-let valid = true;  ← Bad
+let valid = true;
+let pointersNull = false;
+let renderComponent = true;
 ```
 
 ### Never use var
