@@ -290,6 +290,20 @@ Directories are camel case (ex. `webapp/controlMethods`)
 
 ## Variables
 
+### Use prefixes when naming booleans
+
+When naming booleans, use prefixes that give yes/no answers such as *is*, *has*, and *does*:
+
+*Good:*
+```
+let isValid = true;
+```
+
+*Bad:*
+```
+let valid = true;  ← Bad
+```
+
 ### Never use var
 
 Never use var, always use let. Ex:
