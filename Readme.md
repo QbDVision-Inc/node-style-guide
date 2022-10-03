@@ -300,6 +300,7 @@ let isValid = true;
 let arePointersNull = false;
 let shouldRenderComponent = true;
 let hasLicense = true;
+let hasLicense = true;
 ```
 
 *Bad:*
