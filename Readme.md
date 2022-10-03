@@ -32,6 +32,7 @@ according to their preferences.
 * [Filenames](#filenames)
 
 ### Variables
+* [Use prefixes when naming booleans](#use-prefixes-when-naming-booleans)
 * [Never use var](#never-use-var)
 * [Object / Array creation](#object--array-creation)
 
@@ -300,7 +301,6 @@ let isValid = true;
 let arePointersNull = false;
 let shouldRenderComponent = true;
 let hasLicense = true;
-let hasLicense = true;
 ```
 
 *Bad:*
@@ -308,7 +308,9 @@ let hasLicense = true;
 let valid = true;
 let pointersNull = false;
 let renderComponent = true;
+let license = true;
 ```
+Note: Avoid boolean variables that represent the negation of a condition unless necessary e.g., use isValid instead of isNotValid
 
 ### Never use var
 
