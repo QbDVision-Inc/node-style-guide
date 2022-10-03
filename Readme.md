@@ -299,6 +299,7 @@ When naming boolean variables (and functions that return booleans), use prefixes
 let isValid = true;
 let arePointersNull = false;
 let shouldRenderComponent = true;
+let hasLicense = true;
 ```
 
 *Bad:*
