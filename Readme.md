@@ -132,16 +132,15 @@ Also, notice the use of whitespace before and after the condition statement.
 
 ### Declare one variable per let statement
 
-Declare one variable per let statement, it makes it easier to re-order the
-lines. However, ignore [Crockford][crockfordconvention] when it comes to
-declaring variables deeper inside a function, just put the declarations wherever
-they make sense.
+Declare one variable per let/const statement, it makes it easier to re-order the
+lines. However, when it comes to declaring variables deeper inside a function, 
+just put the declarations wherever they make sense.
 
 *Right:*
 
 ```js
 let keys   = ["foo", "bar"];
-let values = [23, 42];
+const values = [23, 42];
 
 let object = {};
 while (keys.length) {
@@ -264,12 +263,21 @@ In HTML and CSS, use kebab case for class names and camel case for IDs.  For exa
 
 ### Filenames
 
-Newer JS, JSX, TS, TSX and SCSS filenames are camel case. For example:
+Newer JSX, TSX, and SCSS filenames are pascal case. For example:
 
 ```
-BlackListChecker.js
+BlackListChecker.jsx
 SearchBar.tsx
 SearchBar.module.scss
+```
+
+We use pascal case for them since they are React components, making it easier to distinguish them from regular JavaScript files.
+
+
+Newer JS and TS filenames are kebab case. For example:
+```
+string-utils.ts
+math-utils.js
 ```
 
 In the past, we used snake case for file names, so older files are often snake case (and you should consider converting them as you update them):
@@ -285,11 +293,16 @@ cannedReports.html
 deployEnvironment.template
 ```
 
-If it’s a Lambda function, name it `*Handler.js`.
+If it’s a Lambda function, name it *-handler.js. For example:
+```
+user-handler.js
+admin-handler.js
+```
+
 Otherwise name it after an appropriate design pattern.  For example:
 ```
-SomethingFactory.js
-ThisOtherFacade.js
+something-factory.js
+this-other-facade.js
 ```
 
 Directories are snake case (ex. `webapp/controlMethods`)
