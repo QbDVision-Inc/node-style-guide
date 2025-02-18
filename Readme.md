@@ -264,7 +264,7 @@ In HTML and CSS, use kebab case for class names and camel case for IDs.  For exa
 
 ### Filenames
 
-Newer JS, JSX, TS, TSX and SCSS filenames are camel case. For example:
+Newer JS, JSX, TS, TSX and SCSS filenames are Pascal case (camel case with the first character also being capitalized). For example:
 
 ```
 BlackListChecker.js
