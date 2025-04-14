@@ -264,35 +264,28 @@ In HTML and CSS, use kebab case for class names and camel case for IDs.  For exa
 
 ### Filenames
 
-Newer JS, JSX, TS, TSX and SCSS filenames are Pascal case (camel case with the first character also being capitalized). For example:
+JS, JSX, TS, TSX and SCSS filenames are snake case. For example:
 
 ```
-BlackListChecker.js
-SearchBar.tsx
-SearchBar.module.scss
+black_list_checker.js
+search_bar.tsx
+search_bar.module.scss
 ```
 
-In the past, we used snake case for file names, so older files are often snake case (and you should consider converting them as you update them):
+HTML and all other files are snake case.  For example:
 ```
-snapshot_helper.js
-some_thing.jsx
-_bootstrap_overrides.scss
-```
-
-HTML and all other files are camel case.  For example:
-```
-cannedReports.html
-deployEnvironment.template
+canned_reports.html
+deploy_environment.template
 ```
 
-If it’s a Lambda function, name it `*Handler.js`.
+If it’s a Lambda function, name it `*_handler.js`.
 Otherwise name it after an appropriate design pattern.  For example:
 ```
-SomethingFactory.js
-ThisOtherFacade.js
+something_factory.js
+this_other_facade.js
 ```
 
-Directories are snake case (ex. `webapp/controlMethods`)
+Directories are camel case (ex. `webapp/controlMethods`)
 
 
 ## Variables
