@@ -616,15 +616,13 @@ class SomeClass extends SomeOtherClass {
 ```
 ### Don't merge TODO comments into master
 
-TODO comments are a convienent way to keep track of yet to completed tasks in our 
-branches but they shouldn't be merged into Master. Instead, get clarification
-from the appropriate stakeholder and update your code before merging to master.
-If the TODO work is out of scope for your PR, then open a ticket to docuemnt the 
-work so it can be tracked.
+TODO comments, or comments whose sole purpose is to speculate about possible
+future work, shouldn't be merged into master. A ticket can be made if the work 
+needs to be tracked.
 
-TODO comments that are already in the code base should be removed as they are 
-encountered if they are out of date. If they are still releveant, then delete
-the TODO comment and open a ticket to ensure the work is tracked.
+TODO comments that are already in the codebase should be removed as they are 
+encountered if they have become irrelevant. If they are still relevant, then
+delete the TODO comment and create a ticket to ensure the work is tracked.
 
 ## Miscellaneous
 
