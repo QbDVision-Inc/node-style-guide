@@ -614,6 +614,15 @@ import //...
  */
 class SomeClass extends SomeOtherClass {
 ```
+### Don't merge TODO comments into master
+
+TODO comments, or comments whose sole purpose is to speculate about possible
+future work, shouldn't be merged into master. A ticket can be made if the work 
+needs to be tracked.
+
+TODO comments that are already in the codebase should be removed as they are 
+encountered if they have become irrelevant. If they are still relevant, then
+delete the TODO comment and create a ticket to ensure the work is tracked.
 
 ## Miscellaneous
 
